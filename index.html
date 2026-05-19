@@ -343,31 +343,6 @@
       color: var(--muted);
     }
 
-    .audio-box {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      align-items: flex-start;
-    }
-
-    .audio-btn {
-      border: none;
-      background: var(--red-2);
-      color: white;
-      padding: 14px 24px;
-      border-radius: 12px;
-      cursor: pointer;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      transition: .2s;
-    }
-
-    .audio-btn:hover {
-      background: #ff1d2e;
-      transform: translateY(-2px);
-    }
-
 
     .discord-btn {
       display: inline-block;
@@ -448,8 +423,7 @@
   <a href="#reglement">Règlement</a>
   <a href="#patchs">Patchs</a>
   <a href="#timeline">Timeline</a>
-  <a href="#ambiance">Ambiance</a>
-  <a href="#discord">Discord</a>
+    <a href="#discord">Discord</a>
   <a href="#events">Événements</a>
   <a href="#membres">Membres</a>
 </nav>
@@ -600,20 +574,7 @@
   </div>
 </section>
 
-<section id="ambiance">
 
-  <h2 class="section-title">Ambiance sonore</h2>
-  <div class="panel audio-box">
-    <p>Active l’ambiance pour donner un style sombre, biker et Bloodline au site.</p>
-
-    <!-- Remplace le lien ci-dessous par ton propre fichier MP3 si tu veux -->
-    <audio id="bgMusic" loop>
-      <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_2c1d0e3c95.mp3?filename=dark-ambient-110397.mp3" type="audio/mpeg">
-    </audio>
-
-    <button class="audio-btn" onclick="toggleMusic()">Activer / Désactiver l’ambiance</button>
-  </div>
-</section>
 
 <section id="events">
   <h2 class="section-title">Événements proposés</h2>
@@ -834,11 +795,7 @@
     document.getElementById("modal").style.display = "none";
   }
 
-  function toggleMusic() {
-    const music = document.getElementById("bgMusic");
-    if (music.paused) {
-      music.play();
-    } else {
+   else {
       music.pause();
     }
   }
