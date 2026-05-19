@@ -3,8 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#050505" />
-  <meta name="description" content="Bloodline Disciples MC - Limitless WL background, membres, objectifs et dossiers RP." />
   <title>🩸 Bloodline Disciples MC</title>
   <style>
     :root {
@@ -331,6 +329,7 @@
       to { opacity: 1; transform: scale(1); }
     }
 
+
     .rank-list {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
@@ -362,6 +361,7 @@
       padding: 18px;
       color: var(--muted);
     }
+
 
     .discord-btn {
       display: inline-block;
@@ -416,6 +416,8 @@
       100% { transform: translateX(120%); }
     }
 
+
+
     * {
       cursor: none !important;
     }
@@ -440,6 +442,7 @@
       height: 100%;
       display: block;
     }
+
 
     .rain-smoke {
       position: fixed;
@@ -491,6 +494,7 @@
     a, button, .member-card {
       cursor: none;
     }
+
 
     .modal-content {
       background:
@@ -587,6 +591,7 @@
       text-transform: uppercase;
     }
 
+
     .hero-video {
       position: absolute;
       inset: 0;
@@ -656,10 +661,12 @@
       opacity: 1;
     }
 
+
     .member-card > * {
       position: relative;
       z-index: 3;
     }
+
 
     .member-card {
       pointer-events: auto !important;
@@ -678,6 +685,7 @@
       pointer-events: none !important;
     }
 
+
     /* FORCE_CLICK_CSS_FIX */
     .member-card {
       pointer-events: auto !important;
@@ -695,6 +703,7 @@
     .rain-smoke::after {
       pointer-events: none !important;
     }
+
 
     .vhs-overlay {
       position: fixed;
@@ -724,6 +733,7 @@
         transform: translateY(180px);
       }
     }
+
 
     .verified-badge {
       position: fixed;
@@ -810,85 +820,6 @@
       }
     }
 
-    /* Optimisation générale */
-    html {
-      scroll-padding-top: 70px;
-    }
-
-    .panel,
-    .objective-card,
-    .event-card,
-    .member-card,
-    .modal-content {
-      contain: layout paint;
-    }
-
-    .member-card,
-    .objective-card,
-    .event-card {
-      backface-visibility: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    .hero-video {
-      will-change: transform;
-    }
-
-    /* Accessibilité + performance */
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
-
-      .hero-video,
-      .rain-smoke,
-      .blood-cursor {
-        display: none !important;
-      }
-
-      * {
-        cursor: auto !important;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .hero-video {
-        opacity: .18;
-        filter: grayscale(70%) contrast(105%) brightness(55%);
-      }
-
-      .rain-smoke {
-        opacity: .16;
-      }
-
-      .verified-badge,
-      .vhs-overlay {
-        transform: scale(.82);
-        transform-origin: top right;
-      }
-
-      .verified-badge {
-        right: 10px;
-        top: 12px;
-      }
-
-      .vhs-overlay {
-        left: 10px;
-        top: 10px;
-      }
-
-      .member-card:hover,
-      .objective-card:hover,
-      .event-card:hover {
-        transform: translateY(-4px) scale(1.01);
-      }
-    }
-
     @media (max-width: 650px) {
       section {
         padding: 55px 5%;
@@ -906,6 +837,7 @@
   <span class="verified-dot"></span>
   LIMITLESS WL VERIFIED
 </div>
+
 
 <div class="vhs-overlay">REC ● <span>BLOODLINE DATABASE</span></div>
 
@@ -930,7 +862,7 @@
 </div>
 
 <header>
-  <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1600&q=70">
+  <video class="hero-video" autoplay muted loop playsinline>
     <source src="https://cdn.coverr.co/videos/coverr-motorcycle-ride-5247/1080p.mp4" type="video/mp4">
   </video>
   <div class="hero">
@@ -950,6 +882,7 @@
   <a href="#events">Événements</a>
   <a href="#membres">Membres</a>
 </nav>
+
 
 <section id="histoire">
   <h2 class="section-title">Histoire du groupe</h2>
@@ -988,6 +921,7 @@
 </p>
   </div>
 </section>
+
 
 <section id="objectifs">
   <h2 class="section-title">Objectifs du MC</h2>
@@ -1063,6 +997,11 @@
   </div>
 </section>
 
+
+
+
+
+
 <section id="events">
   <h2 class="section-title">Événements proposés</h2>
   <div class="events-wrapper">
@@ -1134,6 +1073,7 @@
     <div id="modalBody"></div>
   </div>
 </div>
+
 
 <section id="discord">
   <h2 class="section-title">Discord Officiel</h2>
@@ -1320,101 +1260,99 @@
     card.style.transition = "all .6s ease";
     observer.observe(card);
   });
-}
-});
-});
 
-  // Optimized UI interactions
-  document.addEventListener("DOMContentLoaded", () => {
+
+  window.onclick = function(event) {
     const modal = document.getElementById("modal");
+    if (event.target === modal) {
+      closeModal();
+    }
+  }
 
+  const bloodCursor = document.getElementById("bloodCursor");
+
+  document.addEventListener("mousemove", (e) => {
+    if (bloodCursor) {
+      bloodCursor.style.left = e.clientX + "px";
+      bloodCursor.style.top = e.clientY + "px";
+      bloodCursor.style.display = "block";
+    }
+  });
+
+  document.addEventListener("mouseleave", () => {
+    if (bloodCursor) bloodCursor.style.opacity = "0";
+  });
+
+  document.addEventListener("mouseenter", () => {
+    if (bloodCursor) bloodCursor.style.opacity = "1";
+  });
+
+
+  const interactiveCards = document.querySelectorAll('.member-card, .objective-card, .event-card');
+
+  
+  interactiveCards.forEach(card => {
+    if (card.classList.contains('member-card')) {
+      card.style.pointerEvents = 'auto';
+    }
+
+    if (!card.querySelector('.card-shine')) {
+      const shine = document.createElement('div');
+      shine.className = 'card-shine';
+      card.appendChild(shine);
+    }
+
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+      card.style.setProperty('--x', x + '%');
+      card.style.setProperty('--y', y + '%');
+
+      const rotateY = ((e.clientX - rect.left) / rect.width - 0.5) * 14;
+      const rotateX = -(((e.clientY - rect.top) / rect.height - 0.5) * 14);
+
+      card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px) scale(1.025)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'translateY(0)';
+    });
+  });
+
+
+  document.querySelectorAll('.member-card[data-member]').forEach(card => {
+    card.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const id = this.getAttribute('data-member');
+      openModal(id);
+    });
+  });
+
+
+  // FORCE_CARD_CLICK_FIX
+  document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".member-card[data-member]").forEach(card => {
-      card.addEventListener("click", (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        openModal(card.dataset.member);
-      }, { passive: false });
+      card.onclick = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        openModal(this.dataset.member);
+      };
     });
+  });
 
-    const interactiveCards = document.querySelectorAll(".member-card, .objective-card, .event-card");
 
-    interactiveCards.forEach(card => {
-      if (!card.querySelector(".card-shine")) {
-        const shine = document.createElement("div");
-        shine.className = "card-shine";
-        card.appendChild(shine);
-      }
+  const heroVideo = document.querySelector('.hero-video');
 
-      card.addEventListener("mousemove", (e) => {
-        if (window.innerWidth < 768) return;
+  document.addEventListener('mousemove', (e) => {
+    const x = (e.clientX / window.innerWidth - 0.5) * 16;
+    const y = (e.clientY / window.innerHeight - 0.5) * 16;
 
-        const rect = card.getBoundingClientRect();
-        const px = (e.clientX - rect.left) / rect.width;
-        const py = (e.clientY - rect.top) / rect.height;
-        const x = px * 100;
-        const y = py * 100;
-
-        card.style.setProperty("--x", x + "%");
-        card.style.setProperty("--y", y + "%");
-
-        const rotateY = (px - 0.5) * 10;
-        const rotateX = -((py - 0.5) * 10);
-
-        card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px) scale(1.015)`;
-      });
-
-      card.addEventListener("mouseleave", () => {
-        card.style.transform = "";
-      });
-    });
-
-    const bloodCursor = document.getElementById("bloodCursor");
-    let rafCursor = null;
-    let mouseX = 0;
-    let mouseY = 0;
-
-    document.addEventListener("mousemove", (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-
-      if (!rafCursor) {
-        rafCursor = requestAnimationFrame(() => {
-          if (bloodCursor) {
-            bloodCursor.style.left = mouseX + "px";
-            bloodCursor.style.top = mouseY + "px";
-            bloodCursor.style.display = "block";
-            bloodCursor.style.opacity = "1";
-          }
-          rafCursor = null;
-        });
-      }
-    }, { passive: true });
-
-    document.addEventListener("mouseleave", () => {
-      if (bloodCursor) bloodCursor.style.opacity = "0";
-    });
-
-    const heroVideo = document.querySelector(".hero-video");
-    let rafParallax = null;
-
-    document.addEventListener("mousemove", (e) => {
-      if (window.innerWidth < 768 || !heroVideo) return;
-
-      if (!rafParallax) {
-        rafParallax = requestAnimationFrame(() => {
-          const x = (e.clientX / window.innerWidth - 0.5) * 10;
-          const y = (e.clientY / window.innerHeight - 0.5) * 10;
-          heroVideo.style.transform = `translate(${x}px, ${y}px) scale(1.04)`;
-          rafParallax = null;
-        });
-      }
-    }, { passive: true });
-
-    window.addEventListener("click", (event) => {
-      if (event.target === modal) {
-        closeModal();
-      }
-    });
+    if(heroVideo){
+      heroVideo.style.transform = `translate(${x}px, ${y}px) scale(1.05)`;
+    }
   });
 
 </script>
