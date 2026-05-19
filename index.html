@@ -225,6 +225,7 @@
 
     .member-card {
       cursor: pointer;
+      position: relative;
       text-align: center;
     }
 
@@ -612,6 +613,7 @@
         radial-gradient(circle at center, transparent 0%, rgba(0,0,0,.55) 60%),
         linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.92));
       z-index: 1;
+      pointer-events: none;
     }
 
     header .hero {
@@ -659,6 +661,12 @@
     .objective-card:hover .card-shine,
     .event-card:hover .card-shine {
       opacity: 1;
+    }
+
+
+    .member-card > * {
+      position: relative;
+      z-index: 3;
     }
 
     @media (max-width: 650px) {
@@ -1113,7 +1121,7 @@
     });
 
     card.addEventListener('mouseleave', () => {
-      card.style.transform = '';
+      card.style.transform = 'translateY(0)';
     });
   });
 
