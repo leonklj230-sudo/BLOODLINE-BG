@@ -418,15 +418,21 @@
     }
 
 
-    body {
-      cursor: none;
+
+    * {
+      cursor: none !important;
     }
+
+    html, body, a, button, input, textarea, select {
+      cursor: none !important;
+    }
+
     .blood-cursor {
       position: fixed;
       width: 26px;
       height: 34px;
       pointer-events: none;
-      z-index: 10000;
+      z-index: 999999;
       transform: translate(-50%, -50%);
       background: none;
       filter: drop-shadow(0 0 8px rgba(193,18,31,.9));
