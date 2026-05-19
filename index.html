@@ -47,6 +47,23 @@
     .hero {
       max-width: 1000px;
       animation: fadeIn 1.2s ease;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      display: block;
+      width: 220px;
+      height: 4px;
+      background: var(--red-2);
+      margin: 28px auto 0;
+      box-shadow: 0 0 18px rgba(193,18,31,.9);
+      animation: redLine 1.8s ease;
+    }
+
+    @keyframes redLine {
+      from { width: 0; opacity: 0; }
+      to { width: 220px; opacity: 1; }
     }
 
     .badge {
@@ -393,63 +410,7 @@
       border-color: rgba(193,18,31,.6);
       transform: translateY(-4px);
     }
-
-
-    #loader {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      background: #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      overflow: hidden;
-      transition: opacity .8s ease, visibility .8s ease;
-    }
-
-    #loader.hide {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
-
-    .loader-logo {
-      font-size: clamp(42px, 8vw, 90px);
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 5px;
-      color: #fff;
-      text-shadow: 0 0 18px rgba(193,18,31,.95), 0 0 45px rgba(193,18,31,.6);
-      animation: logoPulse 1.4s ease infinite alternate;
-      text-align: center;
-      padding: 0 20px;
-    }
-
-    .loader-sub {
-      margin-top: 18px;
-      color: var(--red-2);
-      text-transform: uppercase;
-      letter-spacing: 4px;
-      font-size: 14px;
-    }
-
-    .red-transition {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, transparent, rgba(193,18,31,.9), transparent);
-      transform: translateX(-120%);
-      animation: redSlash 2.2s ease forwards;
-    }
-
-    @keyframes logoPulse {
-      from { opacity: .75; transform: scale(.98); }
-      to { opacity: 1; transform: scale(1.03); }
-    }
-
-    @keyframes redSlash {
-      0% { transform: translateX(-120%); }
-      55% { transform: translateX(120%); }
+55% { transform: translateX(120%); }
       100% { transform: translateX(120%); }
     }
 
@@ -466,9 +427,7 @@
 </head>
 <body>
 
-<div id="loader">
-  <div class="red-transition"></div>
-  <div class="loader-logo">Bloodline</div>
+<div class="loader-logo">Bloodline</div>
   <div class="loader-sub">Limitless WL</div>
 </div>
 
@@ -838,16 +797,6 @@
       closeModal();
     }
   }
-
-  
-  function hideLoader() {
-    const loader = document.getElementById("loader");
-    if (loader) loader.classList.add("hide");
-  }
-
-  setTimeout(hideLoader, 1800);
-  window.addEventListener("load", hideLoader);
-
 </script>
 
 </body>
