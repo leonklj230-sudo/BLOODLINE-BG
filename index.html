@@ -705,6 +705,62 @@
       pointer-events: none !important;
     }
 
+
+    .vhs-overlay {
+      position: fixed;
+      top: 12px;
+      left: 18px;
+      z-index: 9999;
+      font-size: 14px;
+      letter-spacing: 2px;
+      color: #ff3b4d;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-shadow: 0 0 12px rgba(193,18,31,.8);
+      pointer-events: none;
+      animation: flicker 1.6s infinite alternate;
+    }
+
+    .vhs-overlay span {
+      color: white;
+      margin-left: 8px;
+    }
+
+    @keyframes flicker {
+      0% { opacity: .75; }
+      100% { opacity: 1; }
+    }
+
+    .blood-drips {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 120px;
+      z-index: 5;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .drip {
+      position: absolute;
+      top: -60px;
+      width: 34px;
+      background: linear-gradient(180deg, #c1121f, #3d0006);
+      border-radius: 0 0 20px 20px;
+      animation: dripMove linear infinite;
+      opacity: .85;
+    }
+
+    @keyframes dripMove {
+      0% {
+        transform: translateY(-90px);
+      }
+      100% {
+        transform: translateY(180px);
+      }
+    }
+
     @media (max-width: 650px) {
       section {
         padding: 55px 5%;
@@ -717,6 +773,18 @@
   </style>
 </head>
 <body>
+
+<div class="vhs-overlay">REC ● <span>BLOODLINE DATABASE</span></div>
+
+<div class="blood-drips">
+  <div class="drip" style="left:5%;height:90px;animation-duration:5s;"></div>
+  <div class="drip" style="left:18%;height:70px;animation-duration:7s;"></div>
+  <div class="drip" style="left:35%;height:110px;animation-duration:6s;"></div>
+  <div class="drip" style="left:57%;height:80px;animation-duration:8s;"></div>
+  <div class="drip" style="left:74%;height:100px;animation-duration:5.5s;"></div>
+  <div class="drip" style="left:89%;height:75px;animation-duration:6.5s;"></div>
+</div>
+
 <div class="rain-smoke"></div>
 <div class="blood-cursor" id="bloodCursor">
   <svg viewBox="0 0 64 88" xmlns="http://www.w3.org/2000/svg">
@@ -752,23 +820,45 @@
   <a href="#membres">Membres</a>
 </nav>
 
+
 <section id="histoire">
   <h2 class="section-title">Histoire du groupe</h2>
   <div class="panel">
     <p>
-      Le Bloodline Disciples MC est né au début des années 2000, fondé par un groupe de riders trahis et abandonnés par leur ancien club. Certains furent laissés pour morts après une histoire d’argent, de loyauté brisée et de confiance détruite.
-    </p>
-    <p>
-      Marqués par cette trahison, ils ont décidé de créer leur propre famille, basée non pas sur des mots, mais sur le sang et les actes. Ainsi est né Bloodline : un club où l’on n’entre pas par hasard, mais où l’on prouve sa valeur, sa loyauté et son engagement envers ses frères.
-    </p>
-    <p>
-      Au fil du temps, ils ont bâti leur réputation dans l’ombre, imposant le respect sans chercher la lumière, protégeant leur territoire et leurs membres avec une détermination absolue.
-    </p>
-    <p>
-      Aujourd’hui, le Bloodline Disciples MC n’est plus seulement un club, mais une véritable lignée, une famille unie par le sang, la loyauté et une promesse : ne jamais revivre le passé.
-    </p>
+      Le Bloodline Disciples MC est né dans la douleur, la colère et la survie.
+      Au début des années 2000, plusieurs riders appartenant à un ancien motorcycle club connu dans la région ont vu leur vie basculer après une trahison qui allait marquer leur existence à jamais.
+      Ce club, autrefois considéré comme une famille, cachait derrière ses couleurs des tensions, des jalousies et des intérêts personnels qui finirent par détruire tout ce qu’ils avaient construit ensemble.
+      <br><br>
+      Tout a commencé après une affaire d’argent sale et de transactions douteuses. Certains membres haut placés du club ont choisi de sacrifier leurs propres frères pour protéger leurs intérêts.
+      Plusieurs riders furent abandonnés lors d’un règlement de comptes violent. Certains furent arrêtés, d’autres blessés, et quelques-uns laissés pour morts sur le bord de la route.
+      <br><br>
+      Parmi les survivants se trouvait Tariq Keita.
+      À cette époque, Tariq n’était pas encore le président respecté qu’il est devenu aujourd’hui. C’était un rider calme, observateur, mais connu pour son mental froid et sa loyauté.
+      <br><br>
+      Petit à petit, il a repris contact avec les anciens frères trahis. Ils se retrouvaient discrètement dans des garages, des bars isolés ou sur des routes désertes loin des regards.
+      Ce n’étaient plus des hommes cherchant la gloire ou le pouvoir. C’étaient des survivants.
+      <br><br>
+      C’est alors qu’est née l’idée du Bloodline Disciples MC.
+      <br><br>
+      Le nom “Bloodline” représente les blessures du passé, les sacrifices et le lien indestructible entre ceux qui ont survécu ensemble.
+      La “lignée” symbolise une nouvelle famille construite sur la loyauté absolue.
+      <br><br>
+      Les débuts furent difficiles. Le club ne possédait ni territoire, ni influence.
+      Mais sous la direction de Tariq Keita, le Bloodline développa rapidement une réputation particulière :
+      ils travaillaient dans l’ombre et ne reculaient jamais.
+      <br><br>
+      Tariq imposait une règle simple :
+      <br><br>
+      <strong>“Un frère qui trahit le sang n’est plus un frère.”</strong>
+      <br><br>
+      Aujourd’hui, le Bloodline Disciples MC est bien plus qu’un simple motorcycle club.
+      C’est une famille forgée dans la douleur, construite sur les erreurs du passé et unie par un code que personne n’a le droit de briser.
+      <br><br>
+      <strong>Le sang passe avant tout.</strong>
+</p>
   </div>
 </section>
+
 
 <section id="objectifs">
   <h2 class="section-title">Objectifs du MC</h2>
@@ -1188,6 +1278,18 @@
         openModal(this.dataset.member);
       };
     });
+  });
+
+
+  const heroVideo = document.querySelector('.hero-video');
+
+  document.addEventListener('mousemove', (e) => {
+    const x = (e.clientX / window.innerWidth - 0.5) * 16;
+    const y = (e.clientY / window.innerHeight - 0.5) * 16;
+
+    if(heroVideo){
+      heroVideo.style.transform = `translate(${x}px, ${y}px) scale(1.05)`;
+    }
   });
 
 </script>
