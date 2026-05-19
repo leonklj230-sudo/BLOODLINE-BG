@@ -687,6 +687,25 @@
       pointer-events: none !important;
     }
 
+
+    /* FORCE_CLICK_CSS_FIX */
+    .member-card {
+      pointer-events: auto !important;
+      cursor: pointer !important;
+      z-index: 5;
+    }
+
+    .member-card * {
+      pointer-events: none !important;
+    }
+
+    .card-shine,
+    .rain-smoke,
+    .rain-smoke::before,
+    .rain-smoke::after {
+      pointer-events: none !important;
+    }
+
     @media (max-width: 650px) {
       section {
         padding: 55px 5%;
@@ -1065,11 +1084,6 @@
     document.getElementById("modal").style.display = "none";
   }
 
-   else {
-      music.pause();
-    }
-  }
-
   
   const cards = document.querySelectorAll('.member-card, .objective-card, .event-card, .patch-card, .rank');
 
@@ -1155,6 +1169,18 @@
       e.stopPropagation();
       const id = this.getAttribute('data-member');
       openModal(id);
+    });
+  });
+
+
+  // FORCE_CARD_CLICK_FIX
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".member-card[data-member]").forEach(card => {
+      card.onclick = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        openModal(this.dataset.member);
+      };
     });
   });
 
