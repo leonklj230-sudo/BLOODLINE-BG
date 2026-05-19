@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bloodline Disciples MC | Background FiveM</title>
+  <title>🩸 Bloodline Disciples MC</title>
   <style>
     :root {
       --bg: #070707;
@@ -394,6 +394,64 @@
       transform: translateY(-4px);
     }
 
+
+    #loader {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      overflow: hidden;
+      transition: opacity .8s ease, visibility .8s ease;
+    }
+
+    #loader.hide {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader-logo {
+      font-size: clamp(42px, 8vw, 90px);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      color: #fff;
+      text-shadow: 0 0 18px rgba(193,18,31,.95), 0 0 45px rgba(193,18,31,.6);
+      animation: logoPulse 1.4s ease infinite alternate;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .loader-sub {
+      margin-top: 18px;
+      color: var(--red-2);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 14px;
+    }
+
+    .red-transition {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(193,18,31,.9), transparent);
+      transform: translateX(-120%);
+      animation: redSlash 2.2s ease forwards;
+    }
+
+    @keyframes logoPulse {
+      from { opacity: .75; transform: scale(.98); }
+      to { opacity: 1; transform: scale(1.03); }
+    }
+
+    @keyframes redSlash {
+      0% { transform: translateX(-120%); }
+      55% { transform: translateX(120%); }
+      100% { transform: translateX(120%); }
+    }
+
     @media (max-width: 650px) {
       section {
         padding: 55px 5%;
@@ -407,11 +465,17 @@
 </head>
 <body>
 
+<div id="loader">
+  <div class="red-transition"></div>
+  <div class="loader-logo">Bloodline</div>
+  <div class="loader-sub">Limitless WL</div>
+</div>
+
 <header>
   <div class="hero">
     <span class="badge">LIMITLESS WL</span>
     <h1>Bloodline Disciples MC</h1>
-    <p class="subtitle">Famille. Loyauté. Sang. Héritage.</p>
+    <p class="subtitle">Bloodline Disciples Motorcycle Club</p>
     <p class="quote">“Le club avant tout. La trahison ne se pardonne pas.”</p>
   </div>
 </header>
@@ -421,8 +485,6 @@
   <a href="#objectifs">Objectifs</a>
   <a href="#hierarchie">Hiérarchie</a>
   <a href="#reglement">Règlement</a>
-  <a href="#patchs">Patchs</a>
-  <a href="#timeline">Timeline</a>
     <a href="#discord">Discord</a>
   <a href="#events">Événements</a>
   <a href="#membres">Membres</a>
@@ -521,58 +583,7 @@
 </section>
 
 
-<section id="patchs">
-  <h2 class="section-title">Patchs & Grades</h2>
-  <div class="panel">
-    <p>Chaque grade possède un rôle précis dans la structure des Bloodline Disciples MC.</p>
 
-    <div class="patch-grid">
-      <div class="patch-card"><h3>Président</h3><p>Dirige l’ensemble du MC et prend les décisions majeures.</p></div>
-      <div class="patch-card"><h3>Vice-Président</h3><p>Bras droit du Président et gestion interne du club.</p></div>
-      <div class="patch-card"><h3>Sergent d’armes</h3><p>Maintient la discipline et gère la sécurité.</p></div>
-      <div class="patch-card"><h3>Road Captain</h3><p>Organise les déplacements et les runs du MC.</p></div>
-      <div class="patch-card"><h3>Trésorier</h3><p>Contrôle les finances et investissements du club.</p></div>
-      <div class="patch-card"><h3>Secrétaire</h3><p>Gère les informations internes et les communications.</p></div>
-      <div class="patch-card"><h3>Enforcer</h3><p>Fait appliquer les décisions du MC par la force si nécessaire.</p></div>
-      <div class="patch-card"><h3>Tailgunner</h3><p>Protège les arrières du groupe pendant les déplacements.</p></div>
-      <div class="patch-card"><h3>Asskicker</h3><p>Membre chargé des tâches musclées et de l’intimidation.</p></div>
-      <div class="patch-card"><h3>Member</h3><p>Membre officiel ayant gagné sa place au sein du MC.</p></div>
-      <div class="patch-card"><h3>Prospect</h3><p>Nouvelle recrue devant prouver sa loyauté.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="timeline">
-  <h2 class="section-title">Timeline Bloodline</h2>
-  <div class="panel">
-    <div class="timeline">
-      <div class="timeline-item">
-        <h3>Début des années 2000</h3>
-        <p>Création des Bloodline Disciples après une trahison au sein d’un ancien MC.</p>
-      </div>
-
-      <div class="timeline-item">
-        <h3>Montée dans l’ombre</h3>
-        <p>Le club construit sa réputation discrètement grâce à la loyauté et à la violence contrôlée.</p>
-      </div>
-
-      <div class="timeline-item">
-        <h3>Expansion</h3>
-        <p>Développement des premiers réseaux, partenaires et activités RP.</p>
-      </div>
-
-      <div class="timeline-item">
-        <h3>Arrivée à Los Angeles</h3>
-        <p>Le MC cherche à imposer sa présence en ville tout en gardant une structure discrète et solide.</p>
-      </div>
-
-      <div class="timeline-item">
-        <h3>Présent</h3>
-        <p>Les Bloodline Disciples cherchent désormais à devenir un acteur majeur du serveur.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
 
 
@@ -826,6 +837,12 @@
       closeModal();
     }
   }
+
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      document.getElementById("loader").classList.add("hide");
+    }, 1800);
+  });
 </script>
 
 </body>
