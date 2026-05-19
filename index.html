@@ -310,6 +310,64 @@
       to { opacity: 1; transform: scale(1); }
     }
 
+
+    .rank-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .rank {
+      background: #111;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--red-2);
+      padding: 18px;
+      border-radius: 14px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .rules-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .rule {
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      color: var(--muted);
+    }
+
+    .audio-box {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    .audio-btn {
+      border: none;
+      background: var(--red-2);
+      color: white;
+      padding: 14px 24px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: .2s;
+    }
+
+    .audio-btn:hover {
+      background: #ff1d2e;
+      transform: translateY(-2px);
+    }
+
     @media (max-width: 650px) {
       section {
         padding: 55px 5%;
@@ -335,6 +393,9 @@
 <nav>
   <a href="#histoire">Histoire</a>
   <a href="#objectifs">Objectifs</a>
+  <a href="#hierarchie">Hiérarchie</a>
+  <a href="#reglement">Règlement</a>
+  <a href="#ambiance">Ambiance</a>
   <a href="#events">Événements</a>
   <a href="#membres">Membres</a>
 </nav>
@@ -391,6 +452,57 @@
         <li>Créer une histoire marquante sur le serveur.</li>
       </ul>
     </div>
+  </div>
+
+</section>
+
+<section id="hierarchie">
+  <h2 class="section-title">Hiérarchie du MC</h2>
+  <div class="panel">
+    <p>La hiérarchie des Bloodline Disciples MC permet de garder une structure claire, une discipline interne et une vraie cohérence RP.</p>
+    <div class="rank-list">
+      <div class="rank">Président</div>
+      <div class="rank">Vice-Président</div>
+      <div class="rank">Sergent d’armes</div>
+      <div class="rank">Secrétaire</div>
+      <div class="rank">Trésorier</div>
+      <div class="rank">Road Captain</div>
+      <div class="rank">Enforcer</div>
+      <div class="rank">Tailgunner</div>
+      <div class="rank">Asskicker</div>
+      <div class="rank">Member</div>
+      <div class="rank">Prospect</div>
+    </div>
+  </div>
+</section>
+
+<section id="reglement">
+  <h2 class="section-title">Règlement interne</h2>
+  <div class="panel">
+    <p>Le règlement interne sert à protéger l’image du club et à garder une ligne RP sérieuse.</p>
+    <div class="rules-list">
+      <div class="rule"><strong>1. Loyauté :</strong> le club passe avant les intérêts personnels.</div>
+      <div class="rule"><strong>2. Respect :</strong> chaque membre respecte la hiérarchie et les décisions prises en interne.</div>
+      <div class="rule"><strong>3. Discrétion :</strong> les informations du club ne sortent jamais sans autorisation.</div>
+      <div class="rule"><strong>4. Cohérence RP :</strong> chaque action doit avoir une logique, une raison et des conséquences.</div>
+      <div class="rule"><strong>5. Discipline :</strong> aucun membre ne provoque de conflit inutile au nom du MC.</div>
+      <div class="rule"><strong>6. Fraternité :</strong> un frère ne reste jamais seul face à un problème.</div>
+      <div class="rule"><strong>7. Sanctions :</strong> trahison, mensonge grave ou manque de respect envers le club peuvent mener à une rétrogradation ou une exclusion RP.</div>
+    </div>
+  </div>
+</section>
+
+<section id="ambiance">
+  <h2 class="section-title">Ambiance sonore</h2>
+  <div class="panel audio-box">
+    <p>Active l’ambiance pour donner un style sombre, biker et Bloodline au site.</p>
+
+    <!-- Remplace le lien ci-dessous par ton propre fichier MP3 si tu veux -->
+    <audio id="bgMusic" loop>
+      <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_2c1d0e3c95.mp3?filename=dark-ambient-110397.mp3" type="audio/mpeg">
+    </audio>
+
+    <button class="audio-btn" onclick="toggleMusic()">Activer / Désactiver l’ambiance</button>
   </div>
 </section>
 
@@ -599,6 +711,15 @@
 
   function closeModal() {
     document.getElementById("modal").style.display = "none";
+  }
+
+  function toggleMusic() {
+    const music = document.getElementById("bgMusic");
+    if (music.paused) {
+      music.play();
+    } else {
+      music.pause();
+    }
   }
 
   window.onclick = function(event) {
