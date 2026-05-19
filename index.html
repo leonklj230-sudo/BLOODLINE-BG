@@ -669,6 +669,24 @@
       z-index: 3;
     }
 
+
+    .member-card {
+      pointer-events: auto !important;
+      cursor: pointer !important;
+      user-select: none;
+    }
+
+    .member-card * {
+      pointer-events: none;
+    }
+
+    .card-shine,
+    .rain-smoke,
+    .rain-smoke::before,
+    .rain-smoke::after {
+      pointer-events: none !important;
+    }
+
     @media (max-width: 650px) {
       section {
         padding: 55px 5%;
@@ -841,28 +859,28 @@
   <h2 class="section-title">Cartes des membres</h2>
   <div class="members">
 
-    <div class="member-card" onclick="openModal('tariq')">
+    <div class="member-card" data-member="tariq">
       <div class="icon">🩸</div>
       <div class="role">Président</div>
       <div class="name">Tariq Keïta</div>
       <div class="origin">Detroit | Américano-Guinéen</div>
     </div>
 
-    <div class="member-card" onclick="openModal('idrissa')">
+    <div class="member-card" data-member="idrissa">
       <div class="icon">🃏</div>
       <div class="role">Trésorier</div>
       <div class="name">Idrissa “Jackpot” Kamara</div>
       <div class="origin">Sierra Leone</div>
     </div>
 
-    <div class="member-card" onclick="openModal('leon')">
+    <div class="member-card" data-member="leon">
       <div class="icon">☠️</div>
       <div class="role">Secrétaire</div>
       <div class="name">Leõn Kingston Jr</div>
       <div class="origin">Californie | Américano-Somalien</div>
     </div>
 
-    <div class="member-card" onclick="openModal('alonzo')">
+    <div class="member-card" data-member="alonzo">
       <div class="icon">🏍️</div>
       <div class="role">Road Captain</div>
       <div class="name">Alonzo Vasquez</div>
@@ -1099,7 +1117,12 @@
 
   const interactiveCards = document.querySelectorAll('.member-card, .objective-card, .event-card');
 
+  
   interactiveCards.forEach(card => {
+    if (card.classList.contains('member-card')) {
+      card.style.pointerEvents = 'auto';
+    }
+
     if (!card.querySelector('.card-shine')) {
       const shine = document.createElement('div');
       shine.className = 'card-shine';
@@ -1122,6 +1145,16 @@
 
     card.addEventListener('mouseleave', () => {
       card.style.transform = 'translateY(0)';
+    });
+  });
+
+
+  document.querySelectorAll('.member-card[data-member]').forEach(card => {
+    card.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const id = this.getAttribute('data-member');
+      openModal(id);
     });
   });
 
