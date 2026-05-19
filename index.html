@@ -39,6 +39,8 @@
       justify-content: center;
       text-align: center;
       padding: 40px 20px;
+      position: relative;
+      overflow: hidden;
       background:
         linear-gradient(rgba(0,0,0,.72), rgba(0,0,0,.88)),
         url("https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1600&q=80") center/cover;
@@ -590,6 +592,75 @@
       text-transform: uppercase;
     }
 
+
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      opacity: .34;
+      filter: grayscale(60%) contrast(120%) brightness(65%);
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at center, transparent 0%, rgba(0,0,0,.55) 60%),
+        linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.92));
+      z-index: 1;
+    }
+
+    header .hero {
+      z-index: 2;
+    }
+
+    .member-card,
+    .objective-card,
+    .event-card {
+      transform-style: preserve-3d;
+      perspective: 900px;
+      will-change: transform;
+    }
+
+    .member-card:hover,
+    .objective-card:hover,
+    .event-card:hover {
+      transform: perspective(900px) rotateX(7deg) rotateY(-7deg) translateY(-10px) scale(1.025);
+      box-shadow:
+        0 18px 40px rgba(0,0,0,.45),
+        0 0 25px rgba(193,18,31,.22);
+    }
+
+    .member-card .icon,
+    .member-card .name,
+    .member-card .role,
+    .member-card .origin,
+    .objective-card h3,
+    .event-card h3 {
+      transform: translateZ(30px);
+      position: relative;
+    }
+
+    .card-shine {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255,255,255,.18), transparent 32%);
+      opacity: 0;
+      transition: opacity .25s;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .member-card:hover .card-shine,
+    .objective-card:hover .card-shine,
+    .event-card:hover .card-shine {
+      opacity: 1;
+    }
+
     @media (max-width: 650px) {
       section {
         padding: 55px 5%;
@@ -610,6 +681,9 @@
 </div>
 
 <header>
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="https://cdn.coverr.co/videos/coverr-motorcycle-ride-5247/1080p.mp4" type="video/mp4">
+  </video>
   <div class="hero">
     <span class="badge">LIMITLESS WL</span>
     <h1>Bloodline Disciples MC</h1>
@@ -1012,6 +1086,35 @@
 
   document.addEventListener("mouseenter", () => {
     if (bloodCursor) bloodCursor.style.display = "block";
+  });
+
+
+  const interactiveCards = document.querySelectorAll('.member-card, .objective-card, .event-card');
+
+  interactiveCards.forEach(card => {
+    if (!card.querySelector('.card-shine')) {
+      const shine = document.createElement('div');
+      shine.className = 'card-shine';
+      card.appendChild(shine);
+    }
+
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+      card.style.setProperty('--x', x + '%');
+      card.style.setProperty('--y', y + '%');
+
+      const rotateY = ((e.clientX - rect.left) / rect.width - 0.5) * 14;
+      const rotateX = -(((e.clientY - rect.top) / rect.height - 0.5) * 14);
+
+      card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px) scale(1.025)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
   });
 
 </script>
