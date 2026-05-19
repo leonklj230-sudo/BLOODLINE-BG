@@ -703,119 +703,13 @@
     .rain-smoke::after {
       pointer-events: none !important;
     }
-
-
-    .vhs-overlay {
-      position: fixed;
-      top: 12px;
-      left: 18px;
-      z-index: 9999;
-      font-size: 14px;
-      letter-spacing: 2px;
-      color: #ff3b4d;
-      font-weight: bold;
-      text-transform: uppercase;
-      text-shadow: 0 0 12px rgba(193,18,31,.8);
-      pointer-events: none;
-      animation: flicker 1.6s infinite alternate;
-    }
-
-    .vhs-overlay span {
-      color: white;
-      margin-left: 8px;
-    }
-
-    @keyframes flicker {
-      0% { opacity: .75; }
-      100% { opacity: 1; }
+100% { opacity: 1; }
     }
 100% {
         transform: translateY(180px);
       }
     }
-
-
-    .verified-badge {
-      position: fixed;
-      top: 18px;
-      right: 22px;
-      z-index: 9999;
-      padding: 12px 18px;
-      border-radius: 14px;
-      background:
-        linear-gradient(135deg, rgba(193,18,31,.95), rgba(90,0,10,.95));
-      border: 1px solid rgba(255,255,255,.12);
-      color: white;
-      font-size: 13px;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      box-shadow:
-        0 0 18px rgba(193,18,31,.55),
-        0 0 40px rgba(193,18,31,.22);
-      animation: verifiedPulse 2s ease-in-out infinite alternate;
-      overflow: hidden;
-      backdrop-filter: blur(8px);
-    }
-
-    .verified-badge::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(
-          120deg,
-          transparent 0%,
-          rgba(255,255,255,.22) 45%,
-          transparent 100%
-        );
-      transform: translateX(-120%);
-      animation: shineMove 3s linear infinite;
-    }
-
-    .verified-dot {
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #4dff88;
-      margin-right: 10px;
-      box-shadow: 0 0 12px #4dff88;
-      animation: dotBlink 1.2s infinite;
-    }
-
-    @keyframes verifiedPulse {
-      from {
-        transform: scale(1);
-        box-shadow:
-          0 0 18px rgba(193,18,31,.45),
-          0 0 35px rgba(193,18,31,.18);
-      }
-
-      to {
-        transform: scale(1.03);
-        box-shadow:
-          0 0 28px rgba(193,18,31,.8),
-          0 0 55px rgba(193,18,31,.35);
-      }
-    }
-
-    @keyframes shineMove {
-      from {
-        transform: translateX(-120%);
-      }
-
-      to {
-        transform: translateX(160%);
-      }
-    }
-
-    @keyframes dotBlink {
-      0%, 100% {
-        opacity: 1;
-      }
-
-      50% {
+50% {
         opacity: .35;
       }
     }
@@ -832,14 +726,6 @@
   </style>
 </head>
 <body>
-
-<div class="verified-badge">
-  <span class="verified-dot"></span>
-  LIMITLESS WL VERIFIED
-</div>
-
-
-<div class="vhs-overlay">REC ● <span>BLOODLINE DATABASE</span></div>
 
 <div class="drip" style="left:18%;height:70px;animation-duration:7s;"></div>
   <div class="drip" style="left:35%;height:110px;animation-duration:6s;"></div>
